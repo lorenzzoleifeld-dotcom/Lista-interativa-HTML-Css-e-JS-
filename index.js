@@ -1,14 +1,17 @@
-const botao = document.getElementById("btn");
-botao.addEventListener("click", function() {
-    const entrada = document.getElementById("input");
+const botao = document.querySelector(".btn");
+const entrada = document.getElementById("input");
+const lista = document.getElementById("lista");
+botao.addEventListener("click", () => {
     if(entrada.value === "")
         return;
-    const lista = document.getElementById("lista");
-    const listItem = document.createElement("li")
+    const listItem = document.createElement("li");
     listItem.textContent = entrada.value;
     lista.appendChild(listItem);
-    listItem.addEventListener("click", function() {
-        lista.removeChild(listItem);
+    listItem.addEventListener("click", () => {
+        if(listItem.classList.contains("estilo")) {
+            lista.removeChild(listItem);
+        } else {
+            listItem.classList.add("estilo");
+        }
     })
 })
-
